@@ -15,7 +15,16 @@ class Api::DevicesController < Api::ApplicationController
 
   def create
 
-    @device = Device.new(device_params)
+
+    if Device.where(device_id: device_params[:device_id]).present?
+      @device = Device.where(device_id: device_params[:device_id]).first
+      @device.gcm_id = device_params[:gcm_id]
+      @device.device_type = device_params[:device_type]
+      @device.gcm_type = device_params[:gcm_type]
+    else
+      @device = Device.new(device_params)
+    end
+
 
     if @device.save
       @json_result.object = @device

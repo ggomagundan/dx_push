@@ -12,8 +12,9 @@ set -e
 
 # Feel free to change any of the following variables for your app:
 TIMEOUT=${TIMEOUT-60}
-APP_ROOT=/geuinea_pig/priday/current
-PID=$APP_ROOT/tmp/pids/unicorn.pid
+APP_ROOT=/cameleon/dx_push/current
+SHARED_ROOT=/cameleon/dx_push/shared
+PID=$SHARED_ROOT/pids/unicorn.pid
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
 AS_USER=root
 set -u

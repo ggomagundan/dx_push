@@ -1,4 +1,6 @@
-class Api::DevicesController < ApplicationController
+class Api::DevicesController < Api::ApplicationController
+
+  skip_before_filter  :verify_authenticity_token
   def index
     @devices = Device.all
   end
@@ -12,12 +14,17 @@ class Api::DevicesController < ApplicationController
   end
 
   def create
-    @device = Device.new(params[:device])
+
+    @device = Device.new(device_params)
+
     if @device.save
-      redirect_to [:api, @device], :notice => "Successfully created device."
+      @json_result.object = @device
+      @json_result.msg = "성공하였습니다."
     else
-      render :action => 'new'
+      @json_result.status = false
+      @json_result.msg= "다시 시도해주세요."
     end
+
   end
 
   def edit
@@ -37,5 +44,10 @@ class Api::DevicesController < ApplicationController
     @device = Device.find(params[:id])
     @device.destroy
     redirect_to api_devices_url, :notice => "Successfully destroyed device."
+  end
+
+  private 
+  def device_params
+    params.require(:device).permit(:device_id, :gcm_id, :device_type, :gcm_type)
   end
 end

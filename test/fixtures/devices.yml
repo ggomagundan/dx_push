@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  device_id: MyString
+  gcm_id: MyString
+  device_type: 1
+  gcm_type: 1
+
+two:
+  device_id: MyString
+  gcm_id: MyString
+  device_type: 1
+  gcm_type: 1

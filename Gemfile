@@ -52,3 +52,7 @@ end
  gem 'pry'
  gem 'mysql2'
  gem 'whenever'
+ gem 'nifty-generators'
+
+
+gem "mocha", group: :test

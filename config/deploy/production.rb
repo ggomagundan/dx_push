@@ -11,20 +11,20 @@
 #role :db,  %w{deploy@example.com}
 
 set :branch,  'master'
-set :domain, "14.63.165.216"
+set :domain, "14.63.215.48"
 set :rails_env, "production"
-set :current_deploy_path, "/geuinea_pig/priday/current"
+set :current_deploy_path, "/cameleon/dx_push/current"
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server '14.63.165.216', user: 'root', roles: %w{web app db}, primary: true#, my_property: :my_value
+server '14.63.215.48', user: 'root', roles: %w{web app db}, primary: true#, my_property: :my_value
 
 
 
-set :deploy_to, '/geuinea_pig/priday'
+set :deploy_to, '/cameleon/dx_push'
  set :ssh_options, {
      user: 'root', # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
